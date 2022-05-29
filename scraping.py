@@ -60,12 +60,11 @@ def mars_news(browser):
     
     return news_title, news_p
 
-# ## JPL Space Images Featured Image
+#JPL Space Images Featured Image
 
 def featured_image(browser):
-    
-    # Visit URL
-    url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
+     # Visit URL
+    url = 'https://spaceimages-mars.com'
     browser.visit(url)
 
     # Find and click the full image button
@@ -78,19 +77,17 @@ def featured_image(browser):
 
     # Add try/except for error handling
     try:
-
-        # Find the relative image url
+        # find the relative image url
         img_url_rel = img_soup.find('img', class_='fancybox-image').get('src')
-        #img_url_rel
 
     except AttributeError:
         return None
-        
-    # Use the base URL to create an absolute URL
-    img_url = f'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{img_url_rel}'
-    return img_url
 
-# ## Mars Facts
+    # Use the base url to create an absolute url
+    img_url = f'https://spaceimages-mars.com/{img_url_rel}'
+
+    return img_url
+# Mars Facts
 
 def mars_facts():
     # Add try/except for error handling
